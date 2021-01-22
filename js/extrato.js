@@ -13,7 +13,7 @@ function validaLogin() {
     dados_comunidade += '<div class="media-body">'
     dados_comunidade += '    <h5 class="mt-0">' + nome_comunidade + '</h5>'
     dados_comunidade += '</div>'
-    document.getElementById("info_comunidade").innerHTML = dados_comunidade;   
+    document.getElementById("info_comunidade").innerHTML = dados_comunidade;
 
     listModernizacao();
 }
@@ -52,12 +52,7 @@ function tratarRetorno(dados) {
 }
 
 function exibirModernizacao(modernizacao) {
-    console.log(modernizacao)
-
-
-
-
-
+    //console.log(modernizacao)
 
     if (modernizacao.length == 0) {
         document.getElementById("listaModenizacao").innerHTML = "Comunidade não possui modernizações cadastradas";
@@ -83,15 +78,16 @@ function exibirModernizacao(modernizacao) {
 
             //console.log(new Date(comunidades[i].dataModernizacao + "T00:00:00-07:00"))
             let data = new Date(comunidades[i].dataModernizacao + "T00:00:00-07:00").toLocaleDateString("pt-BR");
-            let data_atual = new Date().getDate();
-            let data_form = new Date(comunidades[i].dataModernizacao + "T00:00:00-07:00").getDate();
+            let data_atual = new Date();
+            let data_form = new Date(comunidades[i].dataModernizacao + "T00:00:00-07:00");
 
-            //console.log(data_atual + " " + data_form)
+            valor_data_atual = data_atual.getFullYear().toString() + data_atual.getMonth().toString() + data_atual.getDay().toString();
+            valor_data_form = data_form.getFullYear().toString() + data_form.getMonth().toString() + data_form.getDay().toString();
 
-            if (data_form < data_atual) {
+            if (valor_data_form < valor_data_atual) {
                 dados += '<tr class="table-success">'
             } else {
-                if (data_form == data_atual) {
+                if (valor_data_form == valor_data_atual) {
                     dados += '<tr class="table-warning">'
                 } else {
                     dados += '<tr class="table-secondary">'
