@@ -49,9 +49,9 @@ function exibirModernizacao(comunidade) {
         
         dados += '<thead class="thead-dark">'
         dados += '<tr>'
-        dados += '<th scope="col"></th>'
-        dados += '<th scope="col"></th>'
-        dados += '<th scope="col"></th>'        
+        dados += '<th scope="col">Data</th>'
+        dados += '<th scope="col">Descrição</th>'
+        dados += '<th scope="col">Percentual</th>'        
         dados += '</tr>'
         dados += '</thead>'
         dados += '<tbody>'
@@ -61,26 +61,23 @@ function exibirModernizacao(comunidade) {
         
         for (let i = 0; i < comunidades.length; i++) {
 
-            let data = new Date(comunidades[i].dataModernizacao);
+            let data = new Date(comunidades[i].dataModernizacao).toLocaleDateString("pt-BR");
+            let data_atual = new Date().getTime();
+            let data_form = new Date(comunidades[i].dataModernizacao).getTime();
 
-            if (data.getMonth() <= 9){
-                mes = "0" + ((data.getMonth() + 1));
+            console.log(data_atual + " " + data_form)
+            
+            if (data_form < data_atual){
+                dados += '<tr class="table-success">'
             } else
             {
-                mes = ((data.getMonth() + 1));
+                dados += '<tr>'
             }
 
-            if (((data.getDate() )) <= 9){
-                dia = "0" +  ((data.getDate() ));
-            } else
-            {
-                dia =  ((data.getDate() ));
-            }           
+           
 
-            let dataFormatada = dia + "/" + mes + "/" + data.getFullYear(); 
-
-            dados += '<tr>'
-            dados += '<th scope="row">' + dataFormatada + '</th>'
+            
+            dados += '<th scope="row">' + data + '</th>'
             dados += '<td>' + comunidades[i].descricao + '</td>'
             dados += '<td>' + comunidades[i].percentual + '%</td>'
             dados += '</tr>'

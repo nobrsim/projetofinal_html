@@ -13,6 +13,7 @@ function listComunidades(){
     let userTxt = localStorage.getItem("userLogged");
     var obj = JSON.parse(userTxt);
     idUser = obj.id;
+    
 
 
     let loginMsg = {
@@ -48,7 +49,7 @@ function exibirComunidades(comunidade) {
 
     dados_user = '';
 
-    dados_user += '<img src="../imagens/logo_itau.png" class="mr-3" alt="..." width="100" height="100">'
+    dados_user += '<img src="' + comunidade[0].usuario.linkfoto + '" class="mr-3" alt="..." width="100" height="100">'
     dados_user += '<div class="media-body">'
     dados_user += '    <h5 class="mt-0">' + comunidade[0].usuario.nome +'</h5>'
     dados_user += '</div>'

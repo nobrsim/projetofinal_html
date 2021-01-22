@@ -47,7 +47,7 @@ function tratarRetorno(retorno) {
 function acessoPermitido(user) {
     //console.log(user);
     localStorage.setItem("userLogged", JSON.stringify(user))
-    window.location = "gestao.html"
+    window.location = "diretor.html"
 }
 
 function logout() {
