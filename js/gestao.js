@@ -84,7 +84,7 @@ function exibirComunidades(comunidade) {
             dados += '<tr>'
             dados += '<th scope="row">' + comunidades[i].nomeComunidade + '</th>'
             dados += '<td><button class="btn btn-info" onclick="novo(' + comunidades[i].idComunidade + ",'" + comunidades[i].nomeComunidade + "'" + ')" type="submit">Novo</button></td>'
-            dados += '<td><button class="btn btn-dark" onclick="extrato(' + comunidades[i].idComunidade + ')" type="submit">Extrato</button></td>'
+            dados += '<td><button class="btn btn-dark" onclick="extrato(' + comunidades[i].idComunidade + ",'" + comunidades[i].nomeComunidade + "'" + ')" type="submit">Extrato</button></td>'
             dados += '</tr>'
         }
         dados += '</tbody>'
@@ -103,8 +103,9 @@ function novo(id, comunidade) {
     window.location = "cadastro.html"
 }
 
-function extrato(id) {
+function extrato(id, comunidade) {
     localStorage.setItem("extratoRegistro", id)
+    localStorage.setItem("nomeComunidade", comunidade)
     window.location = "extrato.html"
 }
 
