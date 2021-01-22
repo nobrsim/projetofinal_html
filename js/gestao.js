@@ -1,19 +1,26 @@
 function validaLogin() {
     let userTxt = localStorage.getItem("userLogged");
-    console.log(userTxt);
+    //console.log(userTxt);
     if (!userTxt) {
         window.location = "index.html";
     }
 
 
-listComunidades();
+    listComunidades();
 }
 
-function listComunidades(){
+function listComunidades() {
     let userTxt = localStorage.getItem("userLogged");
     var obj = JSON.parse(userTxt);
     idUser = obj.id;
-    
+
+    dados_user = '';
+
+    dados_user += '<img src="' + obj.linkfoto + '" class="mr-3" alt="..." width="100" height="100">'
+    dados_user += '<div class="media-body">'
+    dados_user += '    <h5 class="mt-0">' + obj.nome + '</h5>'
+    dados_user += '</div>'
+    document.getElementById("info_user").innerHTML = dados_user;
 
 
     let loginMsg = {
@@ -30,7 +37,7 @@ function listComunidades(){
     }
 
     fetch("http://localhost:8080/comunidade/user", msg)
-        .then(res => tratarRetorno(res))   
+        .then(res => tratarRetorno(res))
 
 }
 
@@ -45,19 +52,13 @@ function tratarRetorno(dados) {
 }
 
 function exibirComunidades(comunidade) {
-    console.log(comunidade)
-
-    dados_user = '';
-
-    dados_user += '<img src="' + comunidade[0].usuario.linkfoto + '" class="mr-3" alt="..." width="100" height="100">'
-    dados_user += '<div class="media-body">'
-    dados_user += '    <h5 class="mt-0">' + comunidade[0].usuario.nome +'</h5>'
-    dados_user += '</div>'
-    document.getElementById("info_user").innerHTML = dados_user;
+    //console.log(comunidade)
 
 
 
-    console.log(comunidade);
+
+
+    //console.log(comunidade);
 
     if (comunidade.length == 0) {
         document.getElementById("listaComunidades").innerHTML = "Usuario nao possui Comunidades Cadastradas";
@@ -66,7 +67,7 @@ function exibirComunidades(comunidade) {
         let comunidades = comunidade;
 
         let dados = '';
-        
+
         dados += '<thead class="thead-dark">'
         dados += '<tr>'
         dados += '<th scope="col"></th>'
@@ -77,12 +78,12 @@ function exibirComunidades(comunidade) {
         dados += '<tbody>'
 
 
-        
+
         for (let i = 0; i < comunidades.length; i++) {
-            console.log(comunidades[i].nomeComunidade)
+            //console.log(comunidades[i].nomeComunidade)
             dados += '<tr>'
             dados += '<th scope="row">' + comunidades[i].nomeComunidade + '</th>'
-            dados += '<td><button class="btn btn-info" onclick="novo(' + comunidades[i].idComunidade  + ",'" + comunidades[i].nomeComunidade + "'" +')" type="submit">Novo</button></td>'
+            dados += '<td><button class="btn btn-info" onclick="novo(' + comunidades[i].idComunidade + ",'" + comunidades[i].nomeComunidade + "'" + ')" type="submit">Novo</button></td>'
             dados += '<td><button class="btn btn-dark" onclick="extrato(' + comunidades[i].idComunidade + ')" type="submit">Extrato</button></td>'
             dados += '</tr>'
         }
@@ -93,16 +94,21 @@ function exibirComunidades(comunidade) {
 
 
     }
-  
+
 }
 
-function novo(id, comunidade){
+function novo(id, comunidade) {
     localStorage.setItem("novoRegistro", id)
     localStorage.setItem("nomeComunidade", comunidade)
     window.location = "cadastro.html"
 }
 
-function extrato(id){
+function extrato(id) {
     localStorage.setItem("extratoRegistro", id)
     window.location = "extrato.html"
+}
+
+function logout() {
+    localStorage.removeItem("userLogged");
+    window.location = "index.html";
 }

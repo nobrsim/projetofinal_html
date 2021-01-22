@@ -8,6 +8,8 @@ function validaLogin() {
     nome_comunidade = localStorage.getItem("nomeComunidade");
 
     dados_comunidade = '';
+    dados_comunidade += '<img src="../imagens/comunidade.png" class="mr-3" alt="..." width="100" height="100">'
+
     dados_comunidade += '<div class="media-body">'
     dados_comunidade += '    <h5 class="mt-0">' + nome_comunidade + '</h5>'
     dados_comunidade += '</div>'
@@ -41,9 +43,6 @@ function cadastro() {
 
     id_comunidade = localStorage.getItem("novoRegistro");
 
-    console.log(data + "- " + descricao + " " + percentual);
-    // construindo um objeto javascript para enviar
-
     let loginMsg = {
         dataModernizacao: data,
         descricao: descricao,
@@ -53,7 +52,7 @@ function cadastro() {
         }
     }
 
-    console.log(loginMsg);
+    //console.log(loginMsg);
 
 
     //construindo a mensagem que sera enviada ao backend    
@@ -65,20 +64,14 @@ function cadastro() {
         }
     }
 
-    // fetch envia para o servidor 'localhost' o objeto 'msg
-    // '.then'   - quando voltar a resposta
-    // '=>' arrow function que chama a proxima funcao com o parametro 'res'
-    // 'res' é o retorno do fech
 
-    // uma arrow function é equivalente a uma funçao tradicional do javascript
-    // (parm) => {   }
     fetch("http://localhost:8080/modernizacao/new", msg)
         .then(res => tratarRetorno(res))
 
 }
 
 function tratarRetorno(retorno) {
-    console.log(retorno.status);
+    //console.log(retorno.status);
 
     if (retorno.status == 400) {
         alert("Já Existe modernização cadastrada neste mes/ano");
@@ -86,21 +79,18 @@ function tratarRetorno(retorno) {
         if (retorno.status == 402) {
             alert("Excedeu 100% das Modernizações cadastradas no ano");
         } else {
-        if (retorno.status == 200) {
-            //document.getElementById("output").innerHTML = "Registro inserido com Sucesso"
-            retorno.json().then(res => insertCadastro(res))
-        } else {
-            alert("Erro na inserção");
+            if (retorno.status == 200) {
+                retorno.json().then(res => insertCadastro(res))
+            } else {
+                alert("Erro na inserção");
+            }
         }
     }
-}
 }
 
 function insertCadastro(res) {
 
     alert("Cadastro de Modernização Inserido com sucesso");
-    //console.log(user);
-    //localStorage.setItem("userLogged", JSON.stringify(user))
     window.location = "cadastro.html"
 }
 
