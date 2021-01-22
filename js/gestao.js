@@ -61,7 +61,7 @@ function exibirComunidades(comunidade) {
     //console.log(comunidade);
 
     if (comunidade.length == 0) {
-        document.getElementById("listaComunidades").innerHTML = "Usuario nao possui Comunidades Cadastradas";
+        document.getElementById("listaComunidades").innerHTML = "Usuário não possui comunidades cadastradas";
     } else {
 
         let comunidades = comunidade;

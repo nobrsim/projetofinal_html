@@ -41,7 +41,7 @@ function exibirModernizacao(comunidade) {
 
 
     if (comunidade.modernizacoes.length == 0) {
-        document.getElementById("listaModenizacao").innerHTML = "Comunidade nao possui Modernizações Cadastradas";
+        document.getElementById("listaModenizacao").innerHTML = "Comunidade não possui modernizações cadastradas";
     } else {
 
         let comunidades = comunidade.modernizacoes;

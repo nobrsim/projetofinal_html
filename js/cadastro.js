@@ -74,7 +74,7 @@ function tratarRetorno(retorno) {
     //console.log(retorno.status);
 
     if (retorno.status == 400) {
-        alert("Já Existe modernização cadastrada neste mes/ano");
+        alert("Já existe modernização cadastrada neste mês/ano");
     } else {
         if (retorno.status == 402) {
             alert("Excedeu 100% das Modernizações cadastradas no ano");
