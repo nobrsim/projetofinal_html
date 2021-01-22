@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- chamada da biblioteca do CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- chamada da biblioteca bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    
+    <script src="../js/index.js"></script>
+    <script src="../js/gestao.js"></script>
+
+</head>
+
+<body onload="validaLogin()">
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="gestao.html"><img src="../imagens/logo_itau.png" width="20%"> Schedule System</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto"></ul>
+                <button class="btn btn-outline-secondary" onclick="logout()" type="submit">Logout</button>
+            </div>
+        </nav>
+
+        <div class="row"><br><br></div>
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10">
+                <div id="info_user" class="media">
+                    <img src="../imagens/logo_itau.png" class="mr-3" alt="..." width="100" height="100">
+                    <div class="media-body">
+                        <h5 class="mt-0">Nome do Usuário</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <br>
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Minhas Comunidades</legend>
+                    <br>
+                    <table id=listaComunidades class="table table-hover">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Comunidade 1</th>
+                            <td><button class="btn btn-info" onclick="novo(id)" type="submit">Novo</button></td>
+                            <td><button class="btn btn-dark" onclick="extrato(id)" type="submit">Extrato</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Comunidade 2</th>
+                            <td><button class="btn btn-info" onclick="novo(id)" type="submit">Novo</button></td>
+                            <td><button class="btn btn-dark" onclick="extrato(id)" type="submit">Extrato</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Comunidade 3</th>
+                            <td><button class="btn btn-info" onclick="novo(id)" type="submit">Novo</button></td>
+                            <td><button class="btn btn-dark" onclick="extrato(id)" type="submit">Extrato</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+                     
+                </fieldset>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
