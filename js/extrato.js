@@ -81,8 +81,8 @@ function exibirModernizacao(modernizacao) {
             let data_atual = new Date();
             let data_form = new Date(comunidades[i].dataModernizacao + "T00:00:00-07:00");
 
-            valor_data_atual = parseInt(data_atual.getFullYear().toString() + data_atual.getMonth().toString() + data_atual.getDay().toString());
-            valor_data_form = parseInt(data_form.getFullYear().toString() + data_form.getMonth().toString() + data_form.getDay().toString());
+            valor_data_atual = data_atual.getFullYear().toString() + data_atual.getMonth().toString() + data_atual.getDay().toString();
+            valor_data_form = data_form.getFullYear().toString() + data_form.getMonth().toString() + data_form.getDay().toString();
 
             if (valor_data_form < valor_data_atual) {
                 dados += '<tr class="table-success">'
